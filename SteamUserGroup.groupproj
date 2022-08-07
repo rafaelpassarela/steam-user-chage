@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D15A1005-BF36-41C0-B054-09F8D68171E6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SteamUser.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SteamUser">
+        <MSBuild Projects="SteamUser.dproj"/>
+    </Target>
+    <Target Name="SteamUser:Clean">
+        <MSBuild Projects="SteamUser.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SteamUser:Make">
+        <MSBuild Projects="SteamUser.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SteamUser"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SteamUser:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SteamUser:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
